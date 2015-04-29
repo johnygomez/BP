@@ -5,7 +5,6 @@
   Net config 6-20-20-1
   To change configuration of network, change Macro constants in rprop.c file
 */
-  
 #include <Python.h>
 #include <numpy/arrayobject.h>
 #include "rprop.c"

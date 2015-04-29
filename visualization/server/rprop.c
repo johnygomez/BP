@@ -1,7 +1,6 @@
-// MLP2 - TWO-LAYER MULTILAYER PERCEPTRON - SAMPLE IMPLEMENTATION (WITH THE XOR DATA)
-// compile: gcc -Wall -std=gnu99 -O3 -ffast-math -funroll-loops -s -o MLP2 MLP2.c -lm
-// Version 2.0 ----------------------------------------- Copyleft R.JAKSA 2009, GPLv3
-
+// RPROP LEARNING ON MULTILAYER PERCEPTRON
+// compile: gcc -Wall -std=gnu99 -O3 -ffast-math -funroll-loops -s -o rprop_standalone rprop.c -lm
+// Version 1.0 ------------------------------ Copyright J.GAMEC, R.JAKSA
 #define Nin 6  // no. of inputs
 #define Nh1 20   // no. of hidden units in layer 1
 #define Nh2 20   // no. of hidden units in layer 2
@@ -263,7 +262,7 @@ void test_net(ann_t *ann, int num_of_patterns, double** patternSet) {
     MLP2_run(ann);
     error += 0.5 * (dv(OU1) - y(OU1)) * (dv(OU1) - y(OU1));
   }
-  printf("error: %f\n", error);
+  printf("Error: %f\n", error);
 }
 
 void rprop_learn(ann_t *ann, 
@@ -273,8 +272,8 @@ void rprop_learn(ann_t *ann,
   for (int epoch = 0; epoch <= num_of_epochs; epoch++) {
     rprop_learning_step(ann, num_of_patterns, patternSet);
     shuffle(patternSet, num_of_patterns);
-    test_net(ann, num_of_patterns, patternSet);
   }
+  test_net(ann, num_of_patterns, patternSet);
 }
 // ----------------------------------------------------------------------------- MAIN
 // int main(void) {
