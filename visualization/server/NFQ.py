@@ -51,46 +51,40 @@ class NFQ:
     else:
       self.network = None
 
-  def reset_patterns(self):
-    self.training_set = list()
-    self.redis_server.delete('patternset')
-
   def load_patterns(self):
-    _patterns = self.redis_server.get('patternset')
-    if _patterns is not None:
-      self.training_set = json.loads(_patterns)
-      assert type(self.training_set) is list
-    else:
+    _patterns = self.redis_server.lrange('patternset',0,0)
+    if not _patterns:
       self.training_set = None
+    else:
+      self.training_set = json.loads(_patterns[0])
+      assert type(self.training_set) is list
 
-  # ToDo: LPush patternset into list each epoch
-  def write_pattern(self, pattern):
-    self.training_set.append(pattern)
-    self.redis_server.set('patternset', json.dumps(self.training_set))
+  def write_patterns(self, overwrite=True):
+    if overwrite is True:
+      self.redis_server.lpop('patternset')
+
+    self.redis_server.lpush('patternset', json.dumps(self.training_set))
 
   def manage(self):
-    self.save_net()
-    if self.get_reward() == 0:
+    # if self.get_reward() == 0:
+    if self.step_counter >= 50:
       # reached goal state
       self.epoch += 1
       self.redis_server.set('epoch', self.epoch)
-      # TODO: Change to LPUSH same as patterns?
-      self.redis_server.rpush('steps', self.step_counter)
+      self.redis_server.lpush('steps', self.step_counter)
       self.step_counter = 1
       self.network = rp.learn(300, np.array(self.training_set), self.network)
-      self.save_net()
-      # self.reset_patterns()
-      self.choose_controller()
+      self.training_set = list()
+      self.write_patterns(False)
       # TODO: Reset robot and target position and start process again
-    else:
-      self.choose_controller()
+    self.save_net()
+    self.choose_controller()
 
   def choose_controller(self):
     rnd = random()
-    test = math.exp(-self.epoch/20.0)
+    test = math.exp(-self.epoch/50.0)
     print('Probability: ', test)
     if test >= rnd:
-
       # control decission is passed back to human
       return
     else:
@@ -108,7 +102,8 @@ class NFQ:
     self.agent.do(action_num)
     self.refresh_state()
     pattern.append(self.get_target())
-    self.write_pattern(pattern)
+    self.training_set.append(pattern)
+    self.write_patterns()
     self.step_counter += 1
     self.manage()
 
@@ -121,7 +116,7 @@ class NFQ:
       q = rp.run(np.array(pattern), self.network)
       result.append(q)
 
-    print('Q-value', operator(result))
+    print('Q-value', [operator(result), result.index(operator(result))])
     return [operator(result), result.index(operator(result))]
 
   def minQ(self, state):
@@ -149,12 +144,6 @@ class NFQ:
     if self.state[0] < 0.15 and abs(self.state[1] - 0.5) < 0.1:
       return 0
     else:
-      # !!! returning index of max Q, not Q
-      print('------------------')
-      print(math.pow(self.discount, self.step_counter))
-      print(self.minQ(self.state))
-      print(0.1 + math.pow(self.discount, self.step_counter) * self.minQ(self.state))
-      print('------------------')
       return (0.1 + math.pow(self.discount, self.step_counter) * self.minQ(self.state))
 
 
