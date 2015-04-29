@@ -1,0 +1,61 @@
+#VRML_SIM V8.0.5 utf8
+WorldInfo {
+  info [
+    "Aldebaran's Nao H25 V5.0"
+    "Author: Yvan Bourquin - www.cyberbotics.com"
+    "Date: 06 Feb 2012"
+  ]
+  title "Aldebaran Nao H25 V5.0"
+  basicTimeStep 20
+  FPS 20
+  contactProperties [
+    ContactProperties {
+      material1 "NAO foot material"
+      coulombFriction [
+        7
+      ]
+      bounce 0.3
+      bounceVelocity 0.003
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.00544386 0.944229 0.329246 3.07578
+  position 1.00728 2.33889 -3.23584
+}
+Background {
+  skyColor [
+    0.66 0.66 1
+  ]
+}
+DirectionalLight {
+  ambientIntensity 1
+  direction 0.4 -0.7 -0.3
+  intensity 0.6
+  castShadows TRUE
+}
+PointLight {
+  ambientIntensity 1
+  intensity 0.6
+  location 2 0.9 0
+}
+Floor {
+  size 25 25
+  tileSize 0.8 0.8
+  texture [
+    "textures/checkered_marble.png"
+  ]
+}
+SphericalSkyDome {
+}
+DEF Nao1 Nao {
+  translation 0.670478 0.313769 -0.67083
+  rotation 0.991658 0.0917615 0.0905237 -1.57987
+  controller "naoqisim"
+}
+DEF target Ball {
+  hidden linearVelocity_0 0 9.40538e-08 0
+  translation 0 0.032446 0
+}
+Supervisor {
+}
