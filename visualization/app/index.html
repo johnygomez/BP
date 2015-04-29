@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Neural Fitted Q-learning</title>  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="{{ static_url("js/jquery.min.js") }}"></script>
+  <script src="{{ static_url("js/bootstrap.min.js") }}"></script>
+  <script src="{{ static_url("js/app.js") }}"></script>
+
+  <link href="{{ static_url("css/bootstrap.min.css") }}" rel="stylesheet">
+</head>
+<body>
+  <div class="container" id="mainContainer">
+    <div class="row text-center">
+      <h1>NAO Robot Control</h1>
+      <button class="btn btn-lg btn-primary" id="connectBtn">Start Teleoperation</btn>
+    </div>
+  </div>
+  <!-- Enter text to send to the websocket server:
+  <div id="send">
+    <input type="text" id="data" size="100"/><br>
+    <input type="button" id="sendtext" value="send text"/>
+  </div>
+  <div id="output"></div> -->
+</body>
+</html>
