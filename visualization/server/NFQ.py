@@ -28,7 +28,8 @@ class NFQ:
     self.network = rp.init() if self.network is None else self.network
     self.training_set = list() if self.training_set is None else self.training_set 
     self.state = [1.0, 1.0]
-    self.step_counter = 1
+    self.step_counter = len(self.training_set) if self.training_set else 1
+    print self.step_counter
 
 
   def refresh_state(self):
@@ -73,7 +74,7 @@ class NFQ:
       self.redis_server.set('epoch', self.epoch)
       self.redis_server.lpush('steps', self.step_counter)
       self.step_counter = 1
-      self.network = rp.learn(300, np.array(self.training_set), self.network)
+      self.network = rp.learn(10000, np.array(self.training_set), self.network)
       self.training_set = list()
       self.write_patterns(False)
       # TODO: Reset robot and target position and start process again
@@ -144,7 +145,7 @@ class NFQ:
     if self.state[0] < 0.15 and abs(self.state[1] - 0.5) < 0.1:
       return 0
     else:
-      return (0.1 + math.pow(self.discount, self.step_counter) * self.minQ(self.state))
+      return (0.01 + math.pow(self.discount, self.step_counter) * self.minQ(self.state))
 
 
 

@@ -27,16 +27,22 @@ patset = json.loads(srv.lrange('patternset',1,1)[0])
 
 print('pattern: ', patset[-1])
 a = patset[-1][0:2]
-# a.extend([1,0,0,0])
-net3 = rp.learn(20000, np.array(patset), net1)
 print(a)
+b = list()
+b.append(a[0])
+b.append(0.4)
+# a.extend([1,0,0,0])
+net3 = rp.learn(30000, np.array(patset), net1)
 getQ(a, net1)
 getQ(a, net2)
 getQ(a, net3)
+getQ(b, net2)
+getQ(b, net3)
+
 # print rp.run(np.array(a), net1)
 # print rp.run(np.array(a), net2)
 # print rp.run(np.array(a), net3)
 
 
-srv.set('net', json.dumps(net3.tolist()))
+# srv.set('net', json.dumps(net3.tolist()))
 
