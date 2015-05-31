@@ -11,19 +11,79 @@
   <script src="{{ static_url("js/app.js") }}"></script>
 
   <link href="{{ static_url("css/bootstrap.min.css") }}" rel="stylesheet">
+  <link href="{{ static_url("css/style.css") }}" rel="stylesheet">
 </head>
 <body>
   <div class="container" id="mainContainer">
-    <div class="row text-center">
+    <div class="row text-center" id="intro">
       <h1>NAO Robot Control</h1>
-      <button class="btn btn-lg btn-primary" id="connectBtn">Start Teleoperation</btn>
+      <h3 class="text-danger" id="error_message"></h3>
+      <button class="btn btn-lg btn-primary" id="connectBtn">Start Teleoperation</button>
+    </div>
+    <div class="row text-center" id="controls">                                                       
+      <h1>Controlling NAO</h1> 
+      <h2>State</h2>                                                         
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label for="distance" class="col-sm-2 control-label">Distance from target</label>
+          <div class="col-sm-10">
+            <input type="text" disabled class="form-control" id="distance" value="0.0m">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="angle" class="col-sm-2 control-label">Angle to target</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="angle" disabled value="0&deg;">
+          </div>
+        </div>
+      </div>
+      <hr>
+      <h2>Movement</h2> 
+      <div class="row text-center">
+        <div class="col-xs-offset-5 col-xs-2">
+          <button class="btn btn-lg btn-primary" id="action1">
+            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>          
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-4">
+          <button class="btn btn-lg btn-primary col-md-4 col-md-offset-4" id="action2">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+          </button> 
+        </div>
+        <div class="col-xs-2">             
+          <button class="btn btn-lg btn-primary col-md-4 col-md-offset-4" id="action3">
+            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row" id="saveSection">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control" id="taskName" placeholder="Current Task Name">
+          <div class="input-group-btn">
+            <button class="btn btn-primary" id="saveBtn">
+              <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+              Save
+            </btn>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <h2>Run learned tasks</h2> 
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>
+          </tr>
+        </thead>
+        <tbody id="tasks">
+        </tbody>
+      </table>       
     </div>
   </div>
-  <!-- Enter text to send to the websocket server:
-  <div id="send">
-    <input type="text" id="data" size="100"/><br>
-    <input type="button" id="sendtext" value="send text"/>
-  </div>
-  <div id="output"></div> -->
 </body>
 </html>

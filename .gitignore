@@ -1,0 +1,32 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Aux files, old files
+/ignore
+
+# compiled output
+/build
+/__pycache__
+
+# dependencies
+/pybrain
+
+# unnecessary files
+/simulation/Pokus1
+/simulation/NaoSim1
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+
+# vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+

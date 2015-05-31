@@ -1,10 +1,17 @@
-/*
-  Build: python setup.py build_ext --inplace
-  V1.0
-  Copyright Jan Gamec 2015 GPLv3
-  Net config 6-20-20-1
-  To change configuration of network, change Macro constants in rprop.c file
-*/
+/** @file
+ * @author Jan Gamec
+ * @date 24 May 2015
+ * @brief File containing python wrapper for a C MLP with RPROP
+ *
+ * This file serves as a wrapper for functionality in rprop.c . After building this script, it can be
+ * imported as a standalone python module. The module can be build by following command:
+ *     python setup.py build_ext --inplace
+ *
+ * The setup.py file **is required** to be in the same directory as this script!.
+ * In order to change configuration of network, please see documentation for rprop.c file.
+ * @see rprop.c   
+ */
+
 #include <Python.h>
 #include <numpy/arrayobject.h>
 #include "rprop.c"
@@ -27,6 +34,9 @@ static PyObject* rprop_run2(PyObject *self, PyObject *args);
 
 static PyObject* rprop_init(PyObject *self, PyObject *args);
 
+/**
+ * Definition of all functions available after the build.
+ */
 static PyMethodDef module_methods[] = {
   {"learn", rprop_learn2, METH_VARARGS, learn_docstring},
   {"run", rprop_run2, METH_VARARGS, run_docstring},
@@ -34,6 +44,11 @@ static PyMethodDef module_methods[] = {
   {NULL, NULL, 0, NULL}
 };
 
+
+/**
+ * @brief Initializes python wrapping functions
+ *
+ */
 PyMODINIT_FUNC init_rprop(void)
 {
   PyObject *m = Py_InitModule3("_rprop", module_methods, module_docstring);
@@ -44,10 +59,17 @@ PyMODINIT_FUNC init_rprop(void)
   import_array();
 }
 
-// parameters: 
-// int - number of epochs
-// double** - pattern set
-// double** - weights
+/**
+ * @brief Function wrapping a learning process of a neural network.
+ *
+ * Function in python accepts following arguments:
+ * - **num_of_epochs** Number of training epochs
+ * - **patternSet** A numpy array of training patterns
+ * - **weights** A numpy array of neural network weights
+ * @param self Object pointer
+ * @param args Holds all arguments that can be passed to function in python
+ * @return A numpy array holding new weights
+ */
 static PyObject* rprop_learn2(PyObject *self, PyObject *args) {
   int num_of_epochs;
   double **weights, **patternSet;
@@ -81,6 +103,17 @@ static PyObject* rprop_learn2(PyObject *self, PyObject *args) {
   return res;
 }
 
+/**
+ * @brief Function wrapping a function that runs a neural network forward.
+ *
+ * It runs network forward and return values on output neurons.
+ * Function in python accepts following arguments:
+ * - **pattern** A numpy array representing one input pattern
+ * - **weights** A numpy array of neural network weights
+ * @param self Object pointer
+ * @param args Holds all arguments that can be passed to function in python
+ * @return An Q-value on the output neuron with double precission
+ */
 static PyObject* rprop_run2(PyObject *self, PyObject *args) {
   double** weights;
   ann_t ann[1];
@@ -128,7 +161,16 @@ static PyObject* rprop_run2(PyObject *self, PyObject *args) {
   return ret;
 }
 
-// Initialize network with random weights and return weights vector
+
+/**
+ * @brief Function wrapping a initialization of a network
+ *
+ * Function in python has no input arguments. It just creates new network with random weights initialization
+ * and return this weights as a numpy array.
+ * @param self Object pointer
+ * @param args Holds all arguments that can be passed to function in python
+ * @return A numpy array holding new weights of the created network
+ */
 static PyObject *rprop_init(PyObject* self, PyObject *args) {
   ann_t ann[1];
   PyObject *res;

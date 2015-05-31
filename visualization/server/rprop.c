@@ -1,9 +1,20 @@
-// RPROP LEARNING ON MULTILAYER PERCEPTRON
-// compile: gcc -Wall -std=gnu99 -O3 -ffast-math -funroll-loops -s -o rprop_standalone rprop.c -lm
-// Version 1.0 ------------------------------ Copyright J.GAMEC, R.JAKSA
-#define Nin 6  // no. of inputs
-#define Nh1 20   // no. of hidden units in layer 1
-#define Nh2 20   // no. of hidden units in layer 2
+/** @file
+ * @author Jan Gamec
+ * @date 24 May 2015
+ * @brief File containing implementation of MLP with RPROP learning
+ *
+ * This module contain functions for initialization, running and training Multilayer Perceptron
+ * with RPROP learning algorithm. This file cannot be run independently, but
+ * is used as a library for python wrapper. File can be combiled:
+ * gcc -Wall -std=gnu99 -O3 -ffast-math -funroll-loops -s -o rprop_standalone rprop.c -lm
+ */
+/**Defines number of input neurons. This needs to be changed according to task.*/ 
+#define Nin 5
+/**Defines number of neurons in first hidden layer. This needs to be changed according to task.*/
+#define Nh1 10
+/**Defines number of neurons in second hidden layer. This needs to be changed according to task.*/
+#define Nh2 10
+/**Defines number of output neurons. This needs to be changed according to task.*/
 #define Nou 1   // no. of outputs
 #define Gamma 0.2 // learning rate
 #define PositiveEta 1.2 // learning rate for positive rprop
@@ -28,16 +39,21 @@
 #define OU1 (H2n+1) // 1st output
 #define OUn (H2n+Nou) // last output
 
+/**
+ * @brief Struct representing a neural network.
+ *
+ * Container for a complex MLP structure.
+ */
 typedef struct {  //
-  double x[Nx];   // units inputs
-  double y[Nx];   // units activations
-  double delta[Nx]; // units delta signal
-  double prevGrad[Nx][Nx]; // error value from previous time step
-  double currGrad[Nx][Nx];
-  double updateValue[Nx][Nx]; // update value for each weight
-  double wDelta[Nx][Nx];
-  double w[Nx][Nx]; // weights (single weights matrix)
-  double dv[Nou]; // desired value on output
+  double x[Nx];   /**< Input of neurons*/
+  double y[Nx];   /**< Output of neurons*/
+  double delta[Nx]; /**< Delta value on neurons*/
+  double prevGrad[Nx][Nx]; /**< Weight error gradient from last step*/
+  double currGrad[Nx][Nx]; /**< Weight current error gradient */
+  double updateValue[Nx][Nx]; /**< Update value according to RPROP algorithm for each weight*/
+  double wDelta[Nx][Nx]; /**< Delta of weights change*/
+  double w[Nx][Nx]; /**< Weights matrix*/
+  double dv[Nou]; /**< Target value on output neurons*/
 } ann_t;
 
 #define w(i,j)  ann->w[i][j]
@@ -66,6 +82,10 @@ typedef struct {  //
 #define max(a,b) (((a)>(b)) ? a : b)
 //
 
+/** 
+ @brief Returns the sign of given double
+ @param x Double precission number
+ */
 int sign(double x) {
   if (x > 0) {
     return 1;
@@ -77,6 +97,10 @@ int sign(double x) {
 }
 
 // --------------------------------------------------------------- SHUFFLE PATTERNSET
+/** @brief Shuffles the given 2D array
+ *  @param[in,out] array Array to be shuffled
+ *  @param n length of an array
+ */
 void shuffle(double **array, int n)
 {
   if (n > 1) 
@@ -92,9 +116,11 @@ void shuffle(double **array, int n)
   }
 }
 // ----------------------------------------------------------------------- INIT RPROP
+/** @brief Rprop variables initialization.
+ *  Current weights gradient is set to 0 and udpate value to 0.1
+ *  @param[in,out] ann Neural network structure
+ */
 void ann_initRprop(ann_t *ann) {
-  // forlayer(OU, i) currGrad(i,j) = Dmin;
-  // forlayer(H1, i) currGrad(i,j) = Dmin;
   // init every update value to 0.1
   for(int i=0; i<Nx; i++) {
     for(int j=0; j<Nx; j++) {
@@ -104,12 +130,20 @@ void ann_initRprop(ann_t *ann) {
   }
 }
 // --------------------------------------------------------------------- RESET DELTAS
+/** @brief Resets all delta values on neurons
+ *  @param[in,out] ann Neural network structure
+ */
 void ann_resetDelta(ann_t *ann) {
   forlayer(OU, i) delta(i) = 0;
   forlayer(H2, i) delta(i) = 0;
   forlayer(H1, i) delta(i) = 0;
 }
 // -------------------------------------------------------------- RANDOM WEIGHTS INIT
+/** @brief Randomly initializes weights matrix withit given interval
+ *  @param[in,out] ann Neural network structure
+ *  @param min Bottom weight bound
+ *  @param max Upper weight bound
+ */
 void ann_rndinit(ann_t *ann, double min, double max) {//
   y(0)=-1.0;            // the input for bias
   ann_initRprop(ann);
@@ -120,6 +154,10 @@ void ann_rndinit(ann_t *ann, double min, double max) {//
       w(i,j) = rand() / (RAND_MAX/(max-min)) + min; 
 } 
 // ------------------------------------------------------------ INIT NET WITH WEIGHTS
+/** @brief Initializes a network from a give weights matrix
+ *  @param[in,out] ann Neural network structure
+ *  @param weights Initializatioon weights matrix
+ */
 void ann_init(ann_t* ann, double** weights) {
   y(0)=-1.0;            // the input for bias
   ann_initRprop(ann);
@@ -131,6 +169,9 @@ void ann_init(ann_t* ann, double** weights) {
   }
 }
 // ----------------------------------------------------------------- SINGLE LAYER RUN
+/** @brief Calculates an output on one layer using output from previous
+ *  @param[in,out] blk_t(ann) Macro separating 2 layers from ann structure
+ */
 static void layer_run(blk_t(ann)) {     // output/input block from-to
   for(int i=i1; i<=in; i++) {       // for every output
     x(i) = w(i,0) * y(0);       // add bias contribution
@@ -139,13 +180,21 @@ static void layer_run(blk_t(ann)) {     // output/input block from-to
   }
 }
 // ---------------------------------------------------------------------- NETWORK RUN
+/** @brief Simple runs of network in a forward direction
+ *  Calculate output running whole network forward
+ *  @param[in,out] ann Neural network structure
+ */
 void MLP2_run(ann_t *ann) {       
   layer_run(ann, blk(H1,IN));      // in -> h1
   layer_run(ann, blk(H2,H1));      // h1 -> h2
   layer_run(ann, blk(OU,H2));      // h2 -> ou
 }         
 // ---------------------------------------------------------------- COMPUTE GRADIENTS
-// TODO remove out param??
+/** @brief Calculate weights gradients between 2 layers
+ *  
+ *  @param blk_t(ann) Macro representing separated 2 layers
+ *  @param out Signalizes whether the layer is hidden or output/input
+ */
 void calculate_gradients(blk_t(ann), int out) {
   for(int i=i1; i<=in; i++) {   
     currGrad(i,0) -= delta(i) * y(0);
@@ -155,6 +204,12 @@ void calculate_gradients(blk_t(ann), int out) {
   }
 }
 // --------------------------------------------------------------- SINGLE NETWORK RUN
+/** @brief Runs a network in a forward direction with a given input pattern
+ *  Calculate output running whole network forward
+ *  @param[in,out] ann Neural network structure
+ *  @param pattern Training pattern
+ *  @return Vector of values on the output neurons
+ */
 double *rprop_run(ann_t *ann, double* pattern) {
   int i,j;
   double *res = (double*)malloc(sizeof(double) * Nou);
@@ -173,6 +228,11 @@ double *rprop_run(ann_t *ann, double* pattern) {
   return res;
 }
 // -------------------------------------------------------- SINGLE LAYER RPROP UPDATE
+/** @brief Implementation of RPROP learning algorithm according to paper
+ *  Update rules and equations are described in work. This function updates weights
+ *  between 2 layers.
+ *  @param blk_t(ann) Macro separating 2 following layers
+ */
 void rprop_update(blk_t(ann)) {
   double errorChange;
   for(int i=i1; i<=in; i++) { 
@@ -224,6 +284,12 @@ void rprop_update(blk_t(ann)) {
 }
 
 // ------------------------------------------------------------ BASIC RPROP ALGORITHM
+/** @brief RPROP learning step.
+ *  Implementation of RPROP algorithm according to paper. This method makes one 
+ *  forward run throught network calculating learning variables and updating weights
+ *  after then.
+ *  @param[in,out] ann Neural network structure
+ */
 void rprop_learning_step(ann_t *ann, int num_of_patterns, double** patternSet) {
   int i;
   for (i = 0; i < num_of_patterns; i++) {
@@ -251,6 +317,12 @@ void rprop_learning_step(ann_t *ann, int num_of_patterns, double** patternSet) {
     ann_resetDelta(ann);
   }
 // ----------------------------------------------------------- RPROP LEARNING MANAGER
+/** @brief Tests a network for an error against training set
+ * 
+ *  @param[in,out] ann Neural network structure
+ *  @param num_of_pattern Number of pattern in training set
+ *  @param patternSet Training set represented by 2D array
+ */
 void test_net(ann_t *ann, int num_of_patterns, double** patternSet) {
   double error = 0;
   int j;
@@ -265,6 +337,14 @@ void test_net(ann_t *ann, int num_of_patterns, double** patternSet) {
   printf("Error: %f\n", error);
 }
 
+/** @brief Manages a learning process
+ *  Repeats learning procedure for the given number of epochs and shuffles the
+ *  training set. It tests the network after then.
+ *  @param[in,out] ann Neural network structure
+ *  @param num_of_epochs Number of training epochs
+ *  @param num_of_patterns Number of training patterns
+ *  @param patternSet Training set represented by a 2D array
+ */
 void rprop_learn(ann_t *ann, 
   int num_of_epochs, 
   int num_of_patterns, 

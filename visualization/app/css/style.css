@@ -1,0 +1,16 @@
+
+#controls {
+  display: none;
+}
+
+#intro {
+  display: block;
+}
+
+#error_message {
+  display: none;
+}
+
+table {
+  text-transform: capitalize;
+}
