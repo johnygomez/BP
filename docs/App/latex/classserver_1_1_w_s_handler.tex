@@ -1,0 +1,67 @@
+\subsection{W\+S\+Handler Class Reference}
+\label{classserver_1_1_w_s_handler}\index{W\+S\+Handler@{W\+S\+Handler}}
+
+
+Handles websocket communication with web app.  
+
+
+
+
+Inherits Web\+Socket\+Handler.
+
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def {\bf open}
+\begin{DoxyCompactList}\small\item\em Handles all new connections. \end{DoxyCompactList}\item 
+def {\bf on\+\_\+message}
+\begin{DoxyCompactList}\small\item\em Handles various type of messages received over W\+S. \end{DoxyCompactList}\item 
+def {\bf on\+\_\+close}\label{classserver_1_1_w_s_handler_a278f5ae83d49aaff3f84e571d3af6f47}
+
+\begin{DoxyCompactList}\small\item\em Handles close of W\+S connection from client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Handles websocket communication with web app. 
+
+\subsubsection{Member Function Documentation}
+\index{server\+::\+W\+S\+Handler@{server\+::\+W\+S\+Handler}!on\+\_\+message@{on\+\_\+message}}
+\index{on\+\_\+message@{on\+\_\+message}!server\+::\+W\+S\+Handler@{server\+::\+W\+S\+Handler}}
+\paragraph[{on\+\_\+message}]{\setlength{\rightskip}{0pt plus 5cm}def on\+\_\+message (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{json\+\_\+message}
+\end{DoxyParamCaption}
+)}\label{classserver_1_1_w_s_handler_a7618f0d180e9433d4fda68fdcc77b883}
+
+
+Handles various type of messages received over W\+S. 
+
+It distinc 3 main commands\+:
+\begin{DoxyItemize}
+\item Performing an action.
+\item Saving current task.
+\item Running loaded task.
+\end{DoxyItemize}
+
+It also responds with corresponding data 
+\begin{DoxyParams}{Parameters}
+{\em json\+\_\+message} & Data received in W\+S request (like action number) \\
+\hline
+\end{DoxyParams}
+\index{server\+::\+W\+S\+Handler@{server\+::\+W\+S\+Handler}!open@{open}}
+\index{open@{open}!server\+::\+W\+S\+Handler@{server\+::\+W\+S\+Handler}}
+\paragraph[{open}]{\setlength{\rightskip}{0pt plus 5cm}def open (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{classserver_1_1_w_s_handler_ae4b82667a73596ae2d8042e9b4be8a95}
+
+
+Handles all new connections. 
+
+Initializes a new N\+F\+Q instance for each new W\+S connection 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/gomez/\+Projects/\+B\+P/visualization/server/server.\+py\end{DoxyCompactItemize}

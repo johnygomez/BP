@@ -1,0 +1,135 @@
+\section{\+\_\+rprop.\+c File Reference}
+\label{__rprop_8c}\index{\+\_\+rprop.\+c@{\+\_\+rprop.\+c}}
+
+
+File containing python wrapper for a C M\+L\+P with R\+P\+R\+O\+P.  
+
+
+{\ttfamily \#include $<$Python.\+h$>$}\\*
+{\ttfamily \#include $<$numpy/arrayobject.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}rprop.\+c\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Py\+Object $\ast$ {\bf rprop\+\_\+learn2} (Py\+Object $\ast$self, Py\+Object $\ast$args)
+\begin{DoxyCompactList}\small\item\em Function wrapping a learning process of a neural network. \end{DoxyCompactList}\item 
+static Py\+Object $\ast$ {\bf rprop\+\_\+run2} (Py\+Object $\ast$self, Py\+Object $\ast$args)
+\begin{DoxyCompactList}\small\item\em Function wrapping a function that runs a neural network forward. \end{DoxyCompactList}\item 
+static Py\+Object $\ast$ {\bf rprop\+\_\+init} (Py\+Object $\ast$self, Py\+Object $\ast$args)
+\begin{DoxyCompactList}\small\item\em Function wrapping a initialization of a network. \end{DoxyCompactList}\item 
+Py\+M\+O\+D\+I\+N\+I\+T\+\_\+\+F\+U\+N\+C {\bf init\+\_\+rprop} (void)\label{__rprop_8c_af5e1e1f1114b87ddbcf2a656ebaae392}
+
+\begin{DoxyCompactList}\small\item\em Initializes python wrapping functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static Py\+Method\+Def {\bf module\+\_\+methods} [$\,$]
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+File containing python wrapper for a C M\+L\+P with R\+P\+R\+O\+P. 
+
+\begin{DoxyAuthor}{Author}
+Jan Gamec 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24 May 2015 This file serves as a wrapper for functionality in \doxyref{rprop.\+c}{p.}{rprop_8c} . After building this script, it can be imported as a standalone python module. The module can be build by following command\+: python setup.\+py build\+\_\+ext --inplace
+\end{DoxyDate}
+The setup.\+py file {\bfseries is required} to be in the same directory as this script!. In order to change configuration of network, please see documentation for \doxyref{rprop.\+c}{p.}{rprop_8c} file. \begin{DoxySeeAlso}{See also}
+\doxyref{rprop.\+c}{p.}{rprop_8c} 
+\end{DoxySeeAlso}
+
+
+\subsection{Function Documentation}
+\index{\+\_\+rprop.\+c@{\+\_\+rprop.\+c}!rprop\+\_\+init@{rprop\+\_\+init}}
+\index{rprop\+\_\+init@{rprop\+\_\+init}!\+\_\+rprop.\+c@{\+\_\+rprop.\+c}}
+\subsubsection[{rprop\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}static Py\+Object $\ast$ rprop\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{Py\+Object $\ast$}]{self, }
+\item[{Py\+Object $\ast$}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{__rprop_8c_a05ecab9c1ec8658b749c787e0c7eb624}
+
+
+Function wrapping a initialization of a network. 
+
+Function in python has no input arguments. It just creates new network with random weights initialization and return this weights as a numpy array. 
+\begin{DoxyParams}{Parameters}
+{\em self} & Object pointer \\
+\hline
+{\em args} & Holds all arguments that can be passed to function in python \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A numpy array holding new weights of the created network 
+\end{DoxyReturn}
+\index{\+\_\+rprop.\+c@{\+\_\+rprop.\+c}!rprop\+\_\+learn2@{rprop\+\_\+learn2}}
+\index{rprop\+\_\+learn2@{rprop\+\_\+learn2}!\+\_\+rprop.\+c@{\+\_\+rprop.\+c}}
+\subsubsection[{rprop\+\_\+learn2}]{\setlength{\rightskip}{0pt plus 5cm}static Py\+Object $\ast$ rprop\+\_\+learn2 (
+\begin{DoxyParamCaption}
+\item[{Py\+Object $\ast$}]{self, }
+\item[{Py\+Object $\ast$}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{__rprop_8c_ac719ec79037d0deae73b9dbc1d19c50c}
+
+
+Function wrapping a learning process of a neural network. 
+
+Function in python accepts following arguments\+:
+\begin{DoxyItemize}
+\item {\bfseries num\+\_\+of\+\_\+epochs} Number of training epochs
+\item {\bfseries pattern\+Set} A numpy array of training patterns
+\item {\bfseries weights} A numpy array of neural network weights 
+\begin{DoxyParams}{Parameters}
+{\em self} & Object pointer \\
+\hline
+{\em args} & Holds all arguments that can be passed to function in python \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A numpy array holding new weights 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\index{\+\_\+rprop.\+c@{\+\_\+rprop.\+c}!rprop\+\_\+run2@{rprop\+\_\+run2}}
+\index{rprop\+\_\+run2@{rprop\+\_\+run2}!\+\_\+rprop.\+c@{\+\_\+rprop.\+c}}
+\subsubsection[{rprop\+\_\+run2}]{\setlength{\rightskip}{0pt plus 5cm}static Py\+Object $\ast$ rprop\+\_\+run2 (
+\begin{DoxyParamCaption}
+\item[{Py\+Object $\ast$}]{self, }
+\item[{Py\+Object $\ast$}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{__rprop_8c_a0400d0ba1e3b32d144afd89dbf726153}
+
+
+Function wrapping a function that runs a neural network forward. 
+
+It runs network forward and return values on output neurons. Function in python accepts following arguments\+:
+\begin{DoxyItemize}
+\item {\bfseries pattern} A numpy array representing one input pattern
+\item {\bfseries weights} A numpy array of neural network weights 
+\begin{DoxyParams}{Parameters}
+{\em self} & Object pointer \\
+\hline
+{\em args} & Holds all arguments that can be passed to function in python \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An Q-\/value on the output neuron with double precission 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+\subsection{Variable Documentation}
+\index{\+\_\+rprop.\+c@{\+\_\+rprop.\+c}!module\+\_\+methods@{module\+\_\+methods}}
+\index{module\+\_\+methods@{module\+\_\+methods}!\+\_\+rprop.\+c@{\+\_\+rprop.\+c}}
+\subsubsection[{module\+\_\+methods}]{\setlength{\rightskip}{0pt plus 5cm}Py\+Method\+Def module\+\_\+methods[$\,$]\hspace{0.3cm}{\ttfamily [static]}}\label{__rprop_8c_afcd2b5e08091d3973eb552badcfec160}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \{\textcolor{stringliteral}{"learn"}, rprop_learn2, METH\_VARARGS, learn\_docstring\},
+  \{\textcolor{stringliteral}{"run"}, rprop_run2, METH\_VARARGS, run\_docstring\},
+  \{\textcolor{stringliteral}{"init"}, rprop_init, METH\_VARARGS, init\_docstring\},
+  \{NULL, NULL, 0, NULL\}
+\}
+\end{DoxyCode}
+Definition of all functions available after the build. 

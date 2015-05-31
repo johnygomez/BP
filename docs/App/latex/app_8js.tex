@@ -1,0 +1,208 @@
+\subsection{app.\+js File Reference}
+\label{app_8js}\index{app.\+js@{app.\+js}}
+
+
+Javascript application for visualisation of N\+F\+Q algorithm.  
+
+
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+function {\bf connect\+Robot} ()
+\begin{DoxyCompactList}\small\item\em Initializes new websocket connection to server. \end{DoxyCompactList}\item 
+function {\bf server\+Response} (response)
+\begin{DoxyCompactList}\small\item\em Parses received message object from websocket connection. \end{DoxyCompactList}\item 
+function {\bf show\+Intro} (msg)
+\begin{DoxyCompactList}\small\item\em Displays a introduction page. \end{DoxyCompactList}\item 
+function {\bf show\+Controls} ()
+\begin{DoxyCompactList}\small\item\em Displays a N\+F\+Q controls and state information. \end{DoxyCompactList}\item 
+function {\bf save\+Task} ()
+\begin{DoxyCompactList}\small\item\em Request saving current task progress to the database. \end{DoxyCompactList}\item 
+function {\bf load\+Tasks} (tasks)
+\begin{DoxyCompactList}\small\item\em Creates a table of all available tasks from D\+B. \end{DoxyCompactList}\item 
+function {\bf run\+Task} (task)
+\begin{DoxyCompactList}\small\item\em Requests a server to perform a task on a robot. \end{DoxyCompactList}\item 
+function {\bf do\+Action} (action\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Order a robot to do selected action. \end{DoxyCompactList}\item 
+function {\bf enable\+All\+Buttons} ()
+\begin{DoxyCompactList}\small\item\em Enables all buttons on page. \end{DoxyCompactList}\item 
+function {\bf disable\+All\+Buttons} ()
+\begin{DoxyCompactList}\small\item\em Disables all buttons on the page to block request until the current action is finished. \end{DoxyCompactList}\item 
+function {\bf update\+State} (distance, angle)
+\begin{DoxyCompactList}\small\item\em Updates current state information with a new, received over Websocket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Javascript application for visualisation of N\+F\+Q algorithm. 
+
+\begin{DoxyAuthor}{Author}
+Jan Gamec 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24 May 2015
+\end{DoxyDate}
+This application is served as a webpage when running the server application. 
+
+\subsubsection{Function Documentation}
+\index{app.\+js@{app.\+js}!connect\+Robot@{connect\+Robot}}
+\index{connect\+Robot@{connect\+Robot}!app.\+js@{app.\+js}}
+\paragraph[{connect\+Robot}]{\setlength{\rightskip}{0pt plus 5cm}function connect\+Robot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{app_8js_ae99733c6a0b9e6b556349d5b8b13bc9b}
+
+
+Initializes new websocket connection to server. 
+
+Establishes a connection to robot through opening a new websocket connection to server. In addition it binds corresponding callbacks for websocket events. When a new message is received, function server\+Response is called, with a received object. \index{app.\+js@{app.\+js}!disable\+All\+Buttons@{disable\+All\+Buttons}}
+\index{disable\+All\+Buttons@{disable\+All\+Buttons}!app.\+js@{app.\+js}}
+\paragraph[{disable\+All\+Buttons}]{\setlength{\rightskip}{0pt plus 5cm}function disable\+All\+Buttons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{app_8js_ab27044ede2517ab019a7d91d08e64e78}
+
+
+Disables all buttons on the page to block request until the current action is finished. 
+
+\index{app.\+js@{app.\+js}!do\+Action@{do\+Action}}
+\index{do\+Action@{do\+Action}!app.\+js@{app.\+js}}
+\paragraph[{do\+Action}]{\setlength{\rightskip}{0pt plus 5cm}function do\+Action (
+\begin{DoxyParamCaption}
+\item[{}]{action\+\_\+num}
+\end{DoxyParamCaption}
+)}\label{app_8js_a592b15e55d202ab09969e5f9dc146103}
+
+
+Order a robot to do selected action. 
+
+Handles click events on each movement arrows in order to move the \char`\"{}real\char`\"{} robot. 
+\begin{DoxyParams}{Parameters}
+{\em action\+\_\+num} & Number of action from action set \\
+\hline
+\end{DoxyParams}
+\index{app.\+js@{app.\+js}!enable\+All\+Buttons@{enable\+All\+Buttons}}
+\index{enable\+All\+Buttons@{enable\+All\+Buttons}!app.\+js@{app.\+js}}
+\paragraph[{enable\+All\+Buttons}]{\setlength{\rightskip}{0pt plus 5cm}function enable\+All\+Buttons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{app_8js_afe89789aeb53da0bac57df6583fb9322}
+
+
+Enables all buttons on page. 
+
+\index{app.\+js@{app.\+js}!load\+Tasks@{load\+Tasks}}
+\index{load\+Tasks@{load\+Tasks}!app.\+js@{app.\+js}}
+\paragraph[{load\+Tasks}]{\setlength{\rightskip}{0pt plus 5cm}function load\+Tasks (
+\begin{DoxyParamCaption}
+\item[{}]{tasks}
+\end{DoxyParamCaption}
+)}\label{app_8js_a1cf166da37e318ccdc62ee859a7459c1}
+
+
+Creates a table of all available tasks from D\+B. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tasks} & List of task names from database \\
+\hline
+\end{DoxyParams}
+\index{app.\+js@{app.\+js}!run\+Task@{run\+Task}}
+\index{run\+Task@{run\+Task}!app.\+js@{app.\+js}}
+\paragraph[{run\+Task}]{\setlength{\rightskip}{0pt plus 5cm}function run\+Task (
+\begin{DoxyParamCaption}
+\item[{}]{task}
+\end{DoxyParamCaption}
+)}\label{app_8js_a1848bc621f7d2a17ff27dee023b1e52b}
+
+
+Requests a server to perform a task on a robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & Name of the task to be performed \\
+\hline
+\end{DoxyParams}
+\index{app.\+js@{app.\+js}!save\+Task@{save\+Task}}
+\index{save\+Task@{save\+Task}!app.\+js@{app.\+js}}
+\paragraph[{save\+Task}]{\setlength{\rightskip}{0pt plus 5cm}function save\+Task (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{app_8js_a56d8af57b035e728a6862cc68e871a54}
+
+
+Request saving current task progress to the database. 
+
+Takes a name from corresponding input box, requests a server to save the task in D\+B. \index{app.\+js@{app.\+js}!server\+Response@{server\+Response}}
+\index{server\+Response@{server\+Response}!app.\+js@{app.\+js}}
+\paragraph[{server\+Response}]{\setlength{\rightskip}{0pt plus 5cm}function server\+Response (
+\begin{DoxyParamCaption}
+\item[{}]{response}
+\end{DoxyParamCaption}
+)}\label{app_8js_ace9e4b8a0d6d7e7a149f3af777bb2cb2}
+
+
+Parses received message object from websocket connection. 
+
+This function handles basically 4 types of responses and reactions to them\+:
+\begin{DoxyItemize}
+\item Confirmation about succesful connection to robot -\/ display a control U\+I.
+\item Warning about connection error -\/ warns about an error.
+\item State update -\/ refreshes the U\+I.
+\item Result of the performed task -\/ displays final cumulative reward after completion of the task.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & A message object received over websocket \\
+\hline
+\end{DoxyParams}
+\index{app.\+js@{app.\+js}!show\+Controls@{show\+Controls}}
+\index{show\+Controls@{show\+Controls}!app.\+js@{app.\+js}}
+\paragraph[{show\+Controls}]{\setlength{\rightskip}{0pt plus 5cm}function show\+Controls (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{app_8js_a33590eb3c0abc20d4dd4ad2f7b5c88d5}
+
+
+Displays a N\+F\+Q controls and state information. 
+
+\index{app.\+js@{app.\+js}!show\+Intro@{show\+Intro}}
+\index{show\+Intro@{show\+Intro}!app.\+js@{app.\+js}}
+\paragraph[{show\+Intro}]{\setlength{\rightskip}{0pt plus 5cm}function show\+Intro (
+\begin{DoxyParamCaption}
+\item[{}]{msg}
+\end{DoxyParamCaption}
+)}\label{app_8js_a278287ec616d0559012a30c6722d79eb}
+
+
+Displays a introduction page. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & If any warning is received, display it \\
+\hline
+\end{DoxyParams}
+\index{app.\+js@{app.\+js}!update\+State@{update\+State}}
+\index{update\+State@{update\+State}!app.\+js@{app.\+js}}
+\paragraph[{update\+State}]{\setlength{\rightskip}{0pt plus 5cm}function update\+State (
+\begin{DoxyParamCaption}
+\item[{}]{distance, }
+\item[{}]{angle}
+\end{DoxyParamCaption}
+)}\label{app_8js_a57727d5a6134f7b88b2d09dfa6667f26}
+
+
+Updates current state information with a new, received over Websocket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & New distance state \\
+\hline
+{\em angle} & New angle state \\
+\hline
+\end{DoxyParams}

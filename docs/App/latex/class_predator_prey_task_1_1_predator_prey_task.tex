@@ -1,0 +1,75 @@
+\subsection{Predator\+Prey\+Task Class Reference}
+\label{class_predator_prey_task_1_1_predator_prey_task}\index{Predator\+Prey\+Task@{Predator\+Prey\+Task}}
+
+
+Implementation of Task interface for a so called Predator-\/\+Prey task.  
+
+
+
+
+Inherits {\bf Task}.
+
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def {\bf \+\_\+\+\_\+init\+\_\+\+\_\+}\label{class_predator_prey_task_1_1_predator_prey_task_ac775ee34451fdfa742b318538164070e}
+
+\begin{DoxyCompactList}\small\item\em Constructor method. \end{DoxyCompactList}\item 
+def {\bf get\+\_\+reward}
+\begin{DoxyCompactList}\small\item\em A reward function. \end{DoxyCompactList}\item 
+def {\bf refresh\+\_\+state}
+\begin{DoxyCompactList}\small\item\em Update current state loading the data from database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+{\bf database}\label{class_predator_prey_task_1_1_predator_prey_task_a64dbaa3229ec575b68ec333442e10cee}
+
+\begin{DoxyCompactList}\small\item\em Handles connection to the Redis database. \end{DoxyCompactList}\item 
+{\bf state}\label{class_predator_prey_task_1_1_predator_prey_task_adc6e5733fc3c22f0a7b2914188c49c90}
+
+\begin{DoxyCompactList}\small\item\em Stores current state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Implementation of Task interface for a so called Predator-\/\+Prey task. 
+
+\subsubsection{Member Function Documentation}
+\index{Predator\+Prey\+Task\+::\+Predator\+Prey\+Task@{Predator\+Prey\+Task\+::\+Predator\+Prey\+Task}!get\+\_\+reward@{get\+\_\+reward}}
+\index{get\+\_\+reward@{get\+\_\+reward}!Predator\+Prey\+Task\+::\+Predator\+Prey\+Task@{Predator\+Prey\+Task\+::\+Predator\+Prey\+Task}}
+\paragraph[{get\+\_\+reward}]{\setlength{\rightskip}{0pt plus 5cm}def get\+\_\+reward (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{state}
+\end{DoxyParamCaption}
+)}\label{class_predator_prey_task_1_1_predator_prey_task_aa97b81cdb2e9a08c63eab0ca7e94bf66}
+
+
+A reward function. 
+
+If agent is closer to target than 0.\+5m cca 0.\+15 normalized and rotated less than 30 degrees, its considered to be a target state so the reward is 0. Else reward is equal 0.\+01 
+\begin{DoxyParams}{Parameters}
+{\em state} & Current environment state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a reward for a give state 
+\end{DoxyReturn}
+\index{Predator\+Prey\+Task\+::\+Predator\+Prey\+Task@{Predator\+Prey\+Task\+::\+Predator\+Prey\+Task}!refresh\+\_\+state@{refresh\+\_\+state}}
+\index{refresh\+\_\+state@{refresh\+\_\+state}!Predator\+Prey\+Task\+::\+Predator\+Prey\+Task@{Predator\+Prey\+Task\+::\+Predator\+Prey\+Task}}
+\paragraph[{refresh\+\_\+state}]{\setlength{\rightskip}{0pt plus 5cm}def refresh\+\_\+state (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{class_predator_prey_task_1_1_predator_prey_task_a09e7b7d13235130045548d33b3352a1d}
+
+
+Update current state loading the data from database. 
+
+\begin{DoxyReturn}{Returns}
+Returns current environment state 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/gomez/\+Projects/\+B\+P/visualization/server/Predator\+Prey\+Task.\+py\end{DoxyCompactItemize}

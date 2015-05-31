@@ -1,0 +1,420 @@
+\subsection{N\+F\+Q Class Reference}
+\label{class_n_f_q_1_1_n_f_q}\index{N\+F\+Q@{N\+F\+Q}}
+
+
+This class handles mechanism behind \doxyref{N\+F\+Q}{p.}{class_n_f_q_1_1_n_f_q} learning and also decision process.  
+
+
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def {\bf \+\_\+\+\_\+init\+\_\+\+\_\+}
+\begin{DoxyCompactList}\small\item\em Constructor of the class. \end{DoxyCompactList}\item 
+def {\bf save\+\_\+net}
+\begin{DoxyCompactList}\small\item\em Saves current network to database. \end{DoxyCompactList}\item 
+def {\bf load\+\_\+net}
+\begin{DoxyCompactList}\small\item\em Loads and update current network weights with the network saved in database. \end{DoxyCompactList}\item 
+def {\bf load\+\_\+tasks}
+\begin{DoxyCompactList}\small\item\em Loads a list of all previously learned tasks from a database. \end{DoxyCompactList}\item 
+def {\bf load\+\_\+samples}\label{class_n_f_q_1_1_n_f_q_a825de7cd4b9446c695dc6f7d53a486e9}
+
+\begin{DoxyCompactList}\small\item\em Loads a previously collected samples from the database and update current ones with them. \end{DoxyCompactList}\item 
+def {\bf write\+\_\+samples}\label{class_n_f_q_1_1_n_f_q_a049ce9e8a989730486b24d334489a6b6}
+
+\begin{DoxyCompactList}\small\item\em Upload current training samples set into database in J\+S\+O\+N format. \end{DoxyCompactList}\item 
+def {\bf sample\+\_\+to\+\_\+patterns}
+\begin{DoxyCompactList}\small\item\em This method provides basic transformation from the training sample into training patterns. \end{DoxyCompactList}\item 
+def {\bf get\+\_\+training\+\_\+set\+\_\+from\+\_\+samples}
+\begin{DoxyCompactList}\small\item\em Transform whole set of training samples into training patterns according to the proposed algorithm. \end{DoxyCompactList}\item 
+def {\bf learn}
+\begin{DoxyCompactList}\small\item\em The key method of this class, if target state is reached, this method updates a current Q-\/function. \end{DoxyCompactList}\item 
+def {\bf choose\+\_\+controller}
+\begin{DoxyCompactList}\small\item\em This method controls the decision process according to current autonomy level. \end{DoxyCompactList}\item 
+def {\bf run\+\_\+task}
+\begin{DoxyCompactList}\small\item\em Runs a task saved in database with a specific name. \end{DoxyCompactList}\item 
+def {\bf make\+\_\+step\+\_\+task}
+\begin{DoxyCompactList}\small\item\em This methods handles steps and reward counting during performing loaded tasks. \end{DoxyCompactList}\item 
+def {\bf do\+\_\+action}
+\begin{DoxyCompactList}\small\item\em Method representing an elementary step of agent in the environment. \end{DoxyCompactList}\item 
+def {\bf get\+Q}
+\begin{DoxyCompactList}\small\item\em General method for acquiring the Q-\/value for current state-\/action pair. \end{DoxyCompactList}\item 
+def {\bf min\+Q}
+\begin{DoxyCompactList}\small\item\em Gets a minimum Q-\/value in current state for available actions. \end{DoxyCompactList}\item 
+def {\bf min\+Q\+\_\+index}
+\begin{DoxyCompactList}\small\item\em Gets an index of action with minimal Q-\/value in current state. \end{DoxyCompactList}\item 
+def {\bf max\+Q}
+\begin{DoxyCompactList}\small\item\em Gets a maximal Q-\/value in current state for available actions. \end{DoxyCompactList}\item 
+def {\bf max\+Q\+\_\+index}
+\begin{DoxyCompactList}\small\item\em Gets an index of action with a maximal Q-\/value in current state. \end{DoxyCompactList}\item 
+def {\bf get\+\_\+target}
+\begin{DoxyCompactList}\small\item\em Calculates a target Q-\/value according to Bellman equation mentioned in the work. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+{\bf agent}\label{class_n_f_q_1_1_n_f_q_ab127f2768fff9c4628c413617137a553}
+
+\begin{DoxyCompactList}\small\item\em An Agent performs actions in the environment. \end{DoxyCompactList}\item 
+{\bf task}\label{class_n_f_q_1_1_n_f_q_aa4d42044193f96ecc0d82daab68fb0e6}
+
+\begin{DoxyCompactList}\small\item\em A Task object provides reward function and also environment state update. \end{DoxyCompactList}\item 
+{\bf connected}\label{class_n_f_q_1_1_n_f_q_a0d28f70b9b7238e7de23f1128d858d39}
+
+\begin{DoxyCompactList}\small\item\em State variable signalizing if Agent is connected to the real robot. \end{DoxyCompactList}\item 
+{\bf redis\+\_\+server}\label{class_n_f_q_1_1_n_f_q_abf5ffecefbeb3e5456add44dfd66adea}
+
+\begin{DoxyCompactList}\small\item\em Connection to the Redis database. \end{DoxyCompactList}\item 
+{\bf epoch}\label{class_n_f_q_1_1_n_f_q_a2a24c3eb11c4493c51536a7125927b65}
+
+\begin{DoxyCompactList}\small\item\em Episode counter. \end{DoxyCompactList}\item 
+{\bf discount}\label{class_n_f_q_1_1_n_f_q_a97746837457f12b6a4277c3d459a1b1d}
+
+\begin{DoxyCompactList}\small\item\em Discount factor constant for learning process. \end{DoxyCompactList}\item 
+{\bf network}\label{class_n_f_q_1_1_n_f_q_a6b288a470bcb2fd5f321915ef4045b8b}
+
+\begin{DoxyCompactList}\small\item\em Holds weights of the neural network. \end{DoxyCompactList}\item 
+{\bf samples}\label{class_n_f_q_1_1_n_f_q_a95accbf9778b78efc6b4605f4d909eb8}
+
+\begin{DoxyCompactList}\small\item\em Set of training samples in a form of tuples according to work. \end{DoxyCompactList}\item 
+{\bf training\+\_\+set}\label{class_n_f_q_1_1_n_f_q_ab87fb1dc8a9c886db84a2fa17729eaf9}
+
+\begin{DoxyCompactList}\small\item\em Set of training pattern, which can be applied directly to the neural network. \end{DoxyCompactList}\item 
+{\bf state}\label{class_n_f_q_1_1_n_f_q_adc6e5733fc3c22f0a7b2914188c49c90}
+
+\begin{DoxyCompactList}\small\item\em Representation of environment state. \end{DoxyCompactList}\item 
+{\bf step\+\_\+counter}\label{class_n_f_q_1_1_n_f_q_aaa8f1acc9fab510954fe555060a241b2}
+
+\begin{DoxyCompactList}\small\item\em Counts steps made during current episode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list {\bf action\+\_\+codes}\label{class_n_f_q_1_1_n_f_q_a9cec28f2b80d53fea0778e72264a1b2a}
+
+\begin{DoxyCompactList}\small\item\em Encoding of action number for purposes of neural network input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+This class handles mechanism behind \doxyref{N\+F\+Q}{p.}{class_n_f_q_1_1_n_f_q} learning and also decision process. 
+
+It contains definitions for methods that handles communication with database, operating the neural network, performing tasks and finally the \doxyref{N\+F\+Q}{p.}{class_n_f_q_1_1_n_f_q} learning and decision procedure. \begin{DoxyVerb}@author Jan Gamec
+@version 1.0
+\end{DoxyVerb}
+ 
+
+\subsubsection{Constructor \& Destructor Documentation}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{\+\_\+\+\_\+init\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}def \+\_\+\+\_\+init\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{discount = {\ttfamily 0.99}}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_ac775ee34451fdfa742b318538164070e}
+
+
+Constructor of the class. 
+
+Handles basic configuration of the \doxyref{N\+F\+Q}{p.}{class_n_f_q_1_1_n_f_q} module and its constants. It's arranging connection with Redis database and initializes Agent and Task objects, that are necessary for algorithm. It handles initialization of neural network keeping learned knowledge if no record of network configuration is in database. It also loads information about previous learning process from the database and parses previous samples intro training patterns. 
+\begin{DoxyParams}{Parameters}
+{\em discount} & Discount factor constant used during learning \\
+\hline
+\end{DoxyParams}
+
+
+\subsubsection{Member Function Documentation}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!choose\+\_\+controller@{choose\+\_\+controller}}
+\index{choose\+\_\+controller@{choose\+\_\+controller}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{choose\+\_\+controller}]{\setlength{\rightskip}{0pt plus 5cm}def choose\+\_\+controller (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a334280030ebb62b511dc4849136cee46}
+
+
+This method controls the decision process according to current autonomy level. 
+
+It either asks a humna operator for action or decides according to the policy \index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!do\+\_\+action@{do\+\_\+action}}
+\index{do\+\_\+action@{do\+\_\+action}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{do\+\_\+action}]{\setlength{\rightskip}{0pt plus 5cm}def do\+\_\+action (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{action\+\_\+num, }
+\item[{}]{autonomy = {\ttfamily False}}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a059828e7afb0a89671ef08f9f9e8c12e}
+
+
+Method representing an elementary step of agent in the environment. 
+
+Given the action number, method make an Agent do selected action and collect a sample information. Samples are collected in a tuples according to work. \begin{quote}
+[state at t, action number, state at t+1, epoch, step] \end{quote}
+If total autonomy (in a case of performing leaded task) is off, sample is appended to current sample set. This method then delegates decision process back to the \doxyref{learn()}{p.}{class_n_f_q_1_1_n_f_q_aeb9339921d4a63f47fd93e7d7822f0e1} method in a recursive way 
+\begin{DoxyParams}{Parameters}
+{\em action\+\_\+num} & Number of action in the action set \\
+\hline
+{\em autonomy} & Default value is False. During autonomy samples are not stored \\
+\hline
+\end{DoxyParams}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!get\+\_\+target@{get\+\_\+target}}
+\index{get\+\_\+target@{get\+\_\+target}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{get\+\_\+target}]{\setlength{\rightskip}{0pt plus 5cm}def get\+\_\+target (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{state = {\ttfamily None}, }
+\item[{}]{step = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a009c94bdd435c7a379adda4f47ba7da0}
+
+
+Calculates a target Q-\/value according to Bellman equation mentioned in the work. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Represents an environment state. Default is current state. \\
+\hline
+{\em step} & Time step. Default value is step count in current episode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the target Q-\/value for a neural network training 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!get\+\_\+training\+\_\+set\+\_\+from\+\_\+samples@{get\+\_\+training\+\_\+set\+\_\+from\+\_\+samples}}
+\index{get\+\_\+training\+\_\+set\+\_\+from\+\_\+samples@{get\+\_\+training\+\_\+set\+\_\+from\+\_\+samples}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{get\+\_\+training\+\_\+set\+\_\+from\+\_\+samples}]{\setlength{\rightskip}{0pt plus 5cm}def get\+\_\+training\+\_\+set\+\_\+from\+\_\+samples (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a41bb19974711e6fdc955751d5c1c0fa0}
+
+
+Transform whole set of training samples into training patterns according to the proposed algorithm. 
+
+This method updates current training set used for training with the generated one \index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!get\+Q@{get\+Q}}
+\index{get\+Q@{get\+Q}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{get\+Q}]{\setlength{\rightskip}{0pt plus 5cm}def get\+Q (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{state, }
+\item[{}]{operator}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_aecbff2e71eacc518b89558411e9c4e2a}
+
+
+General method for acquiring the Q-\/value for current state-\/action pair. 
+
+This method runs a neural network forward in order to get Q-\/value for current state 
+\begin{DoxyParams}{Parameters}
+{\em state} & Represents state of environment \\
+\hline
+{\em operator} & Function handle, e.\+g. we want minimal Q-\/value in current state for available actions, we use function min() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair, where first value corresponds to the actual Q-\/value and second is the index of the action having this value 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!learn@{learn}}
+\index{learn@{learn}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{learn}]{\setlength{\rightskip}{0pt plus 5cm}def learn (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_aeb9339921d4a63f47fd93e7d7822f0e1}
+
+
+The key method of this class, if target state is reached, this method updates a current Q-\/function. 
+
+Update is realised training a neural network with a training patternset generated from samples collected during previous episodes. It also updates information about the learning progress to the database (Episode no., Number of steps) It delegates recursive control process to the \doxyref{choose\+\_\+controller}{p.}{class_n_f_q_1_1_n_f_q_a334280030ebb62b511dc4849136cee46} \begin{DoxySeeAlso}{See also}
+\doxyref{choose\+\_\+controller}{p.}{class_n_f_q_1_1_n_f_q_a334280030ebb62b511dc4849136cee46} method 
+\end{DoxySeeAlso}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!load\+\_\+net@{load\+\_\+net}}
+\index{load\+\_\+net@{load\+\_\+net}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{load\+\_\+net}]{\setlength{\rightskip}{0pt plus 5cm}def load\+\_\+net (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{name = {\ttfamily 'net'}}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_ace29d26dedd78bf2aa11a7a6a4963ba1}
+
+
+Loads and update current network weights with the network saved in database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Specifies the name of network in the database \\
+\hline
+\end{DoxyParams}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!load\+\_\+tasks@{load\+\_\+tasks}}
+\index{load\+\_\+tasks@{load\+\_\+tasks}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{load\+\_\+tasks}]{\setlength{\rightskip}{0pt plus 5cm}def load\+\_\+tasks (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_af8c46da13010e428234320546345b43b}
+
+
+Loads a list of all previously learned tasks from a database. 
+
+\begin{DoxyReturn}{Returns}
+List of all learned tasks 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!make\+\_\+step\+\_\+task@{make\+\_\+step\+\_\+task}}
+\index{make\+\_\+step\+\_\+task@{make\+\_\+step\+\_\+task}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{make\+\_\+step\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}def make\+\_\+step\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{reward = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_aada248b40fdbcbd978b62a0deb9f3aff}
+
+
+This methods handles steps and reward counting during performing loaded tasks. 
+
+It works in the recursive way. If target area or step limit is not reached, agent make a step and cumulate the reward. The method calls itself until target state or step limit is reached. 
+\begin{DoxyParams}{Parameters}
+{\em reward} & Represents current cumulative reward \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reward after end of task performance 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!max\+Q@{max\+Q}}
+\index{max\+Q@{max\+Q}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{max\+Q}]{\setlength{\rightskip}{0pt plus 5cm}def max\+Q (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{state}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a594aeec3e63750a0d60dc75c883e5412}
+
+
+Gets a maximal Q-\/value in current state for available actions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Represents state of environment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+maximal Q-\/value for current state 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!max\+Q\+\_\+index@{max\+Q\+\_\+index}}
+\index{max\+Q\+\_\+index@{max\+Q\+\_\+index}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{max\+Q\+\_\+index}]{\setlength{\rightskip}{0pt plus 5cm}def max\+Q\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{state}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a73a9b088ceb7051798debf8fa69b148f}
+
+
+Gets an index of action with a maximal Q-\/value in current state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Represents state of environment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the action with a maximal Q-\/value 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!min\+Q@{min\+Q}}
+\index{min\+Q@{min\+Q}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{min\+Q}]{\setlength{\rightskip}{0pt plus 5cm}def min\+Q (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{state}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a3bb0ca0e6444e78d72f843ea687fec56}
+
+
+Gets a minimum Q-\/value in current state for available actions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Represents state of environment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Minimal Q-\/value for current state 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!min\+Q\+\_\+index@{min\+Q\+\_\+index}}
+\index{min\+Q\+\_\+index@{min\+Q\+\_\+index}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{min\+Q\+\_\+index}]{\setlength{\rightskip}{0pt plus 5cm}def min\+Q\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{state}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a5eb62d0f60ade3959535d6c96d9de3c6}
+
+
+Gets an index of action with minimal Q-\/value in current state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Represents state of environment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the action with minimal Q-\/value 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!run\+\_\+task@{run\+\_\+task}}
+\index{run\+\_\+task@{run\+\_\+task}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{run\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}def run\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{name}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a0647f518d9a29328eed53c958fd3bec9}
+
+
+Runs a task saved in database with a specific name. 
+
+The learned task is represented by its N\+N weights configuration which are loaded and replaces current network configuration during the task performance. Original network is restored after then. 
+\begin{DoxyParams}{Parameters}
+{\em name} & Specifies a name of task saved in database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns cumulative reward after task was performed 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!sample\+\_\+to\+\_\+patterns@{sample\+\_\+to\+\_\+patterns}}
+\index{sample\+\_\+to\+\_\+patterns@{sample\+\_\+to\+\_\+patterns}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{sample\+\_\+to\+\_\+patterns}]{\setlength{\rightskip}{0pt plus 5cm}def sample\+\_\+to\+\_\+patterns (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{sample}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_aed1f496109cb75fd667748796f70af1a}
+
+
+This method provides basic transformation from the training sample into training patterns. 
+
+Training patterns are generated according to the algorithm in the work, where for action selected in sample pattern with minimal Q-\/value is generated and for all other actions patterns with maximal Q are generated 
+\begin{DoxyParams}{Parameters}
+{\em sample} & Training sample in the form of tuple \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of training patterns 
+\end{DoxyReturn}
+\index{N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}!save\+\_\+net@{save\+\_\+net}}
+\index{save\+\_\+net@{save\+\_\+net}!N\+F\+Q\+::\+N\+F\+Q@{N\+F\+Q\+::\+N\+F\+Q}}
+\paragraph[{save\+\_\+net}]{\setlength{\rightskip}{0pt plus 5cm}def save\+\_\+net (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{name = {\ttfamily 'net'}}
+\end{DoxyParamCaption}
+)}\label{class_n_f_q_1_1_n_f_q_a6b708400f5bc84a9084858995ec0e1e3}
+
+
+Saves current network to database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Specifies name for the network \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/gomez/\+Projects/\+B\+P/visualization/server/N\+F\+Q.\+py\end{DoxyCompactItemize}

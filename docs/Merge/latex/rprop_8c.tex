@@ -1,0 +1,350 @@
+\hypertarget{rprop_8c}{\subsection{rprop.\+c File Reference}
+\label{rprop_8c}\index{rprop.\+c@{rprop.\+c}}
+}
+
+
+File containing implementation of M\+L\+P with R\+P\+R\+O\+P learning.  
+
+
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$sys/timeb.\+h$>$}\\*
+\subsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structann__t}{ann\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Struct representing a neural network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{rprop_8c_a8789b0ee4127673b7c6a11984cb43799}{Nin}~5
+\item 
+\#define \hyperlink{rprop_8c_aadcddb25e57233f4489fb565866980f7}{Nh1}~10
+\item 
+\#define \hyperlink{rprop_8c_aafef3b00dfe7301b794f92992622db41}{Nh2}~10
+\item 
+\#define \hyperlink{rprop_8c_aeb7e0ca9a50d320cdc1d35a4bfe4f06b}{Nou}~1
+\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{rprop_8c_a09f11d2057b22449a395bd4f02513a61}{sign} (double x)
+\begin{DoxyCompactList}\small\item\em Returns the sign of given double. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_a67882459f5db4729b376f69634e3a115}{shuffle} (double $\ast$$\ast$array, int n)
+\begin{DoxyCompactList}\small\item\em Shuffles the given 2\+D array. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_ac07c149a8052093a18af1d7dfba6521f}{ann\+\_\+init\+Rprop} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann)
+\begin{DoxyCompactList}\small\item\em Rprop variables initialization. Current weights gradient is set to 0 and udpate value to 0.\+1. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_af2aa73c91fbadcce1b828b0a0c91da39}{ann\+\_\+reset\+Delta} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann)
+\begin{DoxyCompactList}\small\item\em Resets all delta values on neurons. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_aafaf52374157117d8c17f14ef66ebbaf}{ann\+\_\+rndinit} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann, double min, double max)
+\begin{DoxyCompactList}\small\item\em Randomly initializes weights matrix withit given interval. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_a8465ac1fcb6b83e67335901e1ed96490}{ann\+\_\+init} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann, double $\ast$$\ast$weights)
+\begin{DoxyCompactList}\small\item\em Initializes a network from a give weights matrix. \end{DoxyCompactList}\item 
+static void \hyperlink{rprop_8c_a13bc49fdce56851bd8194b661b9ba1a9}{layer\+\_\+run} (blk\+\_\+t(ann))
+\begin{DoxyCompactList}\small\item\em Calculates an output on one layer using output from previous. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_aa6ff8ad6e571b5d6b84b67e1ed007697}{M\+L\+P2\+\_\+run} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann)
+\begin{DoxyCompactList}\small\item\em Simple runs of network in a forward direction Calculate output running whole network forward. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_acf1ce1c76ca7c8ad808b803d85326f8e}{calculate\+\_\+gradients} (blk\+\_\+t(ann), int out)
+\begin{DoxyCompactList}\small\item\em Calculate weights gradients between 2 layers. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{rprop_8c_aa4c60c37653065ad50dd4ad86427a027}{rprop\+\_\+run} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann, double $\ast$pattern)
+\begin{DoxyCompactList}\small\item\em Runs a network in a forward direction with a given input pattern Calculate output running whole network forward. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_a4c7b022919361ff45893eb65a78765bb}{rprop\+\_\+update} (blk\+\_\+t(ann))
+\begin{DoxyCompactList}\small\item\em Implementation of R\+P\+R\+O\+P learning algorithm according to paper Update rules and equations are described in work. This function updates weights between 2 layers. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_a18f1e73827c8cf7f85c109c72d496de7}{rprop\+\_\+learning\+\_\+step} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann, int num\+\_\+of\+\_\+patterns, double $\ast$$\ast$pattern\+Set)
+\begin{DoxyCompactList}\small\item\em R\+P\+R\+O\+P learning step. Implementation of R\+P\+R\+O\+P algorithm according to paper. This method makes one forward run throught network calculating learning variables and updating weights after then. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_adc8ee5b6790b6169a7a3777fd3b11432}{test\+\_\+net} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann, int num\+\_\+of\+\_\+patterns, double $\ast$$\ast$pattern\+Set)
+\begin{DoxyCompactList}\small\item\em Tests a network for an error against training set. \end{DoxyCompactList}\item 
+void \hyperlink{rprop_8c_ad3142a2138e229e121623fd440651d3b}{rprop\+\_\+learn} (\hyperlink{structann__t}{ann\+\_\+t} $\ast$ann, int num\+\_\+of\+\_\+epochs, int num\+\_\+of\+\_\+patterns, double $\ast$$\ast$pattern\+Set)
+\begin{DoxyCompactList}\small\item\em Manages a learning process Repeats learning procedure for the given number of epochs and shuffles the training set. It tests the network after then. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+File containing implementation of M\+L\+P with R\+P\+R\+O\+P learning. 
+
+\begin{DoxyAuthor}{Author}
+Jan Gamec 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24 May 2015 This module contain functions for initialization, running and training Multilayer Perceptron with R\+P\+R\+O\+P learning algorithm. This file cannot be run independently, but is used as a library for python wrapper. File can be combiled\+: gcc -\/\+Wall -\/std=gnu99 -\/\+O3 -\/ffast-\/math -\/funroll-\/loops -\/s -\/o rprop\+\_\+standalone \hyperlink{rprop_8c}{rprop.\+c} -\/lm 
+\end{DoxyDate}
+
+
+\subsubsection{Macro Definition Documentation}
+\hypertarget{rprop_8c_aadcddb25e57233f4489fb565866980f7}{\index{rprop.\+c@{rprop.\+c}!Nh1@{Nh1}}
+\index{Nh1@{Nh1}!rprop.\+c@{rprop.\+c}}
+\paragraph[{Nh1}]{\setlength{\rightskip}{0pt plus 5cm}\#define Nh1~10}}\label{rprop_8c_aadcddb25e57233f4489fb565866980f7}
+Defines number of neurons in first hidden layer. This needs to be changed according to task. \hypertarget{rprop_8c_aafef3b00dfe7301b794f92992622db41}{\index{rprop.\+c@{rprop.\+c}!Nh2@{Nh2}}
+\index{Nh2@{Nh2}!rprop.\+c@{rprop.\+c}}
+\paragraph[{Nh2}]{\setlength{\rightskip}{0pt plus 5cm}\#define Nh2~10}}\label{rprop_8c_aafef3b00dfe7301b794f92992622db41}
+Defines number of neurons in second hidden layer. This needs to be changed according to task. \hypertarget{rprop_8c_a8789b0ee4127673b7c6a11984cb43799}{\index{rprop.\+c@{rprop.\+c}!Nin@{Nin}}
+\index{Nin@{Nin}!rprop.\+c@{rprop.\+c}}
+\paragraph[{Nin}]{\setlength{\rightskip}{0pt plus 5cm}\#define Nin~5}}\label{rprop_8c_a8789b0ee4127673b7c6a11984cb43799}
+Defines number of input neurons. This needs to be changed according to task. \hypertarget{rprop_8c_aeb7e0ca9a50d320cdc1d35a4bfe4f06b}{\index{rprop.\+c@{rprop.\+c}!Nou@{Nou}}
+\index{Nou@{Nou}!rprop.\+c@{rprop.\+c}}
+\paragraph[{Nou}]{\setlength{\rightskip}{0pt plus 5cm}\#define Nou~1}}\label{rprop_8c_aeb7e0ca9a50d320cdc1d35a4bfe4f06b}
+Defines number of output neurons. This needs to be changed according to task. 
+
+\subsubsection{Function Documentation}
+\hypertarget{rprop_8c_a8465ac1fcb6b83e67335901e1ed96490}{\index{rprop.\+c@{rprop.\+c}!ann\+\_\+init@{ann\+\_\+init}}
+\index{ann\+\_\+init@{ann\+\_\+init}!rprop.\+c@{rprop.\+c}}
+\paragraph[{ann\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void ann\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann, }
+\item[{double $\ast$$\ast$}]{weights}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_a8465ac1fcb6b83e67335901e1ed96490}
+
+
+Initializes a network from a give weights matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+ & {\em weights} & Initializatioon weights matrix \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_ac07c149a8052093a18af1d7dfba6521f}{\index{rprop.\+c@{rprop.\+c}!ann\+\_\+init\+Rprop@{ann\+\_\+init\+Rprop}}
+\index{ann\+\_\+init\+Rprop@{ann\+\_\+init\+Rprop}!rprop.\+c@{rprop.\+c}}
+\paragraph[{ann\+\_\+init\+Rprop}]{\setlength{\rightskip}{0pt plus 5cm}void ann\+\_\+init\+Rprop (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_ac07c149a8052093a18af1d7dfba6521f}
+
+
+Rprop variables initialization. Current weights gradient is set to 0 and udpate value to 0.\+1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_af2aa73c91fbadcce1b828b0a0c91da39}{\index{rprop.\+c@{rprop.\+c}!ann\+\_\+reset\+Delta@{ann\+\_\+reset\+Delta}}
+\index{ann\+\_\+reset\+Delta@{ann\+\_\+reset\+Delta}!rprop.\+c@{rprop.\+c}}
+\paragraph[{ann\+\_\+reset\+Delta}]{\setlength{\rightskip}{0pt plus 5cm}void ann\+\_\+reset\+Delta (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_af2aa73c91fbadcce1b828b0a0c91da39}
+
+
+Resets all delta values on neurons. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_aafaf52374157117d8c17f14ef66ebbaf}{\index{rprop.\+c@{rprop.\+c}!ann\+\_\+rndinit@{ann\+\_\+rndinit}}
+\index{ann\+\_\+rndinit@{ann\+\_\+rndinit}!rprop.\+c@{rprop.\+c}}
+\paragraph[{ann\+\_\+rndinit}]{\setlength{\rightskip}{0pt plus 5cm}void ann\+\_\+rndinit (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann, }
+\item[{double}]{min, }
+\item[{double}]{max}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_aafaf52374157117d8c17f14ef66ebbaf}
+
+
+Randomly initializes weights matrix withit given interval. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+ & {\em min} & Bottom weight bound \\
+\hline
+ & {\em max} & Upper weight bound \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_acf1ce1c76ca7c8ad808b803d85326f8e}{\index{rprop.\+c@{rprop.\+c}!calculate\+\_\+gradients@{calculate\+\_\+gradients}}
+\index{calculate\+\_\+gradients@{calculate\+\_\+gradients}!rprop.\+c@{rprop.\+c}}
+\paragraph[{calculate\+\_\+gradients}]{\setlength{\rightskip}{0pt plus 5cm}void calculate\+\_\+gradients (
+\begin{DoxyParamCaption}
+\item[{blk\+\_\+t(ann)}]{, }
+\item[{int}]{out}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_acf1ce1c76ca7c8ad808b803d85326f8e}
+
+
+Calculate weights gradients between 2 layers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blk\+\_\+t(ann)} & Macro representing separated 2 layers \\
+\hline
+{\em out} & Signalizes whether the layer is hidden or output/input \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_a13bc49fdce56851bd8194b661b9ba1a9}{\index{rprop.\+c@{rprop.\+c}!layer\+\_\+run@{layer\+\_\+run}}
+\index{layer\+\_\+run@{layer\+\_\+run}!rprop.\+c@{rprop.\+c}}
+\paragraph[{layer\+\_\+run}]{\setlength{\rightskip}{0pt plus 5cm}static void layer\+\_\+run (
+\begin{DoxyParamCaption}
+\item[{blk\+\_\+t(ann)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{rprop_8c_a13bc49fdce56851bd8194b661b9ba1a9}
+
+
+Calculates an output on one layer using output from previous. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em blk\+\_\+t(ann)} & Macro separating 2 layers from ann structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_aa6ff8ad6e571b5d6b84b67e1ed007697}{\index{rprop.\+c@{rprop.\+c}!M\+L\+P2\+\_\+run@{M\+L\+P2\+\_\+run}}
+\index{M\+L\+P2\+\_\+run@{M\+L\+P2\+\_\+run}!rprop.\+c@{rprop.\+c}}
+\paragraph[{M\+L\+P2\+\_\+run}]{\setlength{\rightskip}{0pt plus 5cm}void M\+L\+P2\+\_\+run (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_aa6ff8ad6e571b5d6b84b67e1ed007697}
+
+
+Simple runs of network in a forward direction Calculate output running whole network forward. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_ad3142a2138e229e121623fd440651d3b}{\index{rprop.\+c@{rprop.\+c}!rprop\+\_\+learn@{rprop\+\_\+learn}}
+\index{rprop\+\_\+learn@{rprop\+\_\+learn}!rprop.\+c@{rprop.\+c}}
+\paragraph[{rprop\+\_\+learn}]{\setlength{\rightskip}{0pt plus 5cm}void rprop\+\_\+learn (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann, }
+\item[{int}]{num\+\_\+of\+\_\+epochs, }
+\item[{int}]{num\+\_\+of\+\_\+patterns, }
+\item[{double $\ast$$\ast$}]{pattern\+Set}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_ad3142a2138e229e121623fd440651d3b}
+
+
+Manages a learning process Repeats learning procedure for the given number of epochs and shuffles the training set. It tests the network after then. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+ & {\em num\+\_\+of\+\_\+epochs} & Number of training epochs \\
+\hline
+ & {\em num\+\_\+of\+\_\+patterns} & Number of training patterns \\
+\hline
+ & {\em pattern\+Set} & Training set represented by a 2\+D array \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_a18f1e73827c8cf7f85c109c72d496de7}{\index{rprop.\+c@{rprop.\+c}!rprop\+\_\+learning\+\_\+step@{rprop\+\_\+learning\+\_\+step}}
+\index{rprop\+\_\+learning\+\_\+step@{rprop\+\_\+learning\+\_\+step}!rprop.\+c@{rprop.\+c}}
+\paragraph[{rprop\+\_\+learning\+\_\+step}]{\setlength{\rightskip}{0pt plus 5cm}void rprop\+\_\+learning\+\_\+step (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann, }
+\item[{int}]{num\+\_\+of\+\_\+patterns, }
+\item[{double $\ast$$\ast$}]{pattern\+Set}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_a18f1e73827c8cf7f85c109c72d496de7}
+
+
+R\+P\+R\+O\+P learning step. Implementation of R\+P\+R\+O\+P algorithm according to paper. This method makes one forward run throught network calculating learning variables and updating weights after then. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_aa4c60c37653065ad50dd4ad86427a027}{\index{rprop.\+c@{rprop.\+c}!rprop\+\_\+run@{rprop\+\_\+run}}
+\index{rprop\+\_\+run@{rprop\+\_\+run}!rprop.\+c@{rprop.\+c}}
+\paragraph[{rprop\+\_\+run}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ rprop\+\_\+run (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann, }
+\item[{double $\ast$}]{pattern}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_aa4c60c37653065ad50dd4ad86427a027}
+
+
+Runs a network in a forward direction with a given input pattern Calculate output running whole network forward. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+ & {\em pattern} & Training pattern \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of values on the output neurons 
+\end{DoxyReturn}
+\hypertarget{rprop_8c_a4c7b022919361ff45893eb65a78765bb}{\index{rprop.\+c@{rprop.\+c}!rprop\+\_\+update@{rprop\+\_\+update}}
+\index{rprop\+\_\+update@{rprop\+\_\+update}!rprop.\+c@{rprop.\+c}}
+\paragraph[{rprop\+\_\+update}]{\setlength{\rightskip}{0pt plus 5cm}void rprop\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{blk\+\_\+t(ann)}]{}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_a4c7b022919361ff45893eb65a78765bb}
+
+
+Implementation of R\+P\+R\+O\+P learning algorithm according to paper Update rules and equations are described in work. This function updates weights between 2 layers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blk\+\_\+t(ann)} & Macro separating 2 following layers \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_a67882459f5db4729b376f69634e3a115}{\index{rprop.\+c@{rprop.\+c}!shuffle@{shuffle}}
+\index{shuffle@{shuffle}!rprop.\+c@{rprop.\+c}}
+\paragraph[{shuffle}]{\setlength{\rightskip}{0pt plus 5cm}void shuffle (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{array, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_a67882459f5db4729b376f69634e3a115}
+
+
+Shuffles the given 2\+D array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em array} & Array to be shuffled \\
+\hline
+ & {\em n} & length of an array \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_a09f11d2057b22449a395bd4f02513a61}{\index{rprop.\+c@{rprop.\+c}!sign@{sign}}
+\index{sign@{sign}!rprop.\+c@{rprop.\+c}}
+\paragraph[{sign}]{\setlength{\rightskip}{0pt plus 5cm}int sign (
+\begin{DoxyParamCaption}
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_a09f11d2057b22449a395bd4f02513a61}
+
+
+Returns the sign of given double. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Double precission number \\
+\hline
+\end{DoxyParams}
+\hypertarget{rprop_8c_adc8ee5b6790b6169a7a3777fd3b11432}{\index{rprop.\+c@{rprop.\+c}!test\+\_\+net@{test\+\_\+net}}
+\index{test\+\_\+net@{test\+\_\+net}!rprop.\+c@{rprop.\+c}}
+\paragraph[{test\+\_\+net}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+net (
+\begin{DoxyParamCaption}
+\item[{{\bf ann\+\_\+t} $\ast$}]{ann, }
+\item[{int}]{num\+\_\+of\+\_\+patterns, }
+\item[{double $\ast$$\ast$}]{pattern\+Set}
+\end{DoxyParamCaption}
+)}}\label{rprop_8c_adc8ee5b6790b6169a7a3777fd3b11432}
+
+
+Tests a network for an error against training set. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em ann} & Neural network structure \\
+\hline
+ & {\em num\+\_\+of\+\_\+pattern} & Number of pattern in training set \\
+\hline
+ & {\em pattern\+Set} & Training set represented by 2\+D array \\
+\hline
+\end{DoxyParams}

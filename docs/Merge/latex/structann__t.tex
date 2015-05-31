@@ -1,0 +1,69 @@
+\hypertarget{structann__t}{\subsection{ann\+\_\+t Struct Reference}
+\label{structann__t}\index{ann\+\_\+t@{ann\+\_\+t}}
+}
+
+
+Struct representing a neural network.  
+
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{structann__t_ac566dbcdd25e058c1e82f59d63dfd12b}{x} \mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_adec9cbbd838a286742a4ae286bff0e30}{y} \mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_a610000125df6a3004a1a0768bee350be}{delta} \mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_ae668825bd99ec5a8e701cd34833d92c8}{prev\+Grad} \mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_ad634fb273a77c89ef50752fe62499b4f}{curr\+Grad} \mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_a56f1cf095bad5da7e0c944dd9727293a}{update\+Value} \mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_a19e899724a3a7ab9150e22e0d48ebc3e}{w\+Delta} \mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_aee905c93142ba709a90118c788622185}{w} \mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}
+\item 
+double \hyperlink{structann__t_a3cd26d516c0d78e0bd8e83f7b5d96056}{dv} \mbox{[}\hyperlink{rprop_8c_aeb7e0ca9a50d320cdc1d35a4bfe4f06b}{Nou}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Struct representing a neural network. 
+
+Container for a complex M\+L\+P structure. 
+
+\subsubsection{Field Documentation}
+\hypertarget{structann__t_ad634fb273a77c89ef50752fe62499b4f}{\index{ann\+\_\+t@{ann\+\_\+t}!curr\+Grad@{curr\+Grad}}
+\index{curr\+Grad@{curr\+Grad}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{curr\+Grad}]{\setlength{\rightskip}{0pt plus 5cm}double curr\+Grad\mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}}}\label{structann__t_ad634fb273a77c89ef50752fe62499b4f}
+Weight current error gradient \hypertarget{structann__t_a610000125df6a3004a1a0768bee350be}{\index{ann\+\_\+t@{ann\+\_\+t}!delta@{delta}}
+\index{delta@{delta}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{delta}]{\setlength{\rightskip}{0pt plus 5cm}double delta\mbox{[}Nx\mbox{]}}}\label{structann__t_a610000125df6a3004a1a0768bee350be}
+Delta value on neurons \hypertarget{structann__t_a3cd26d516c0d78e0bd8e83f7b5d96056}{\index{ann\+\_\+t@{ann\+\_\+t}!dv@{dv}}
+\index{dv@{dv}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{dv}]{\setlength{\rightskip}{0pt plus 5cm}double dv\mbox{[}{\bf Nou}\mbox{]}}}\label{structann__t_a3cd26d516c0d78e0bd8e83f7b5d96056}
+Target value on output neurons \hypertarget{structann__t_ae668825bd99ec5a8e701cd34833d92c8}{\index{ann\+\_\+t@{ann\+\_\+t}!prev\+Grad@{prev\+Grad}}
+\index{prev\+Grad@{prev\+Grad}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{prev\+Grad}]{\setlength{\rightskip}{0pt plus 5cm}double prev\+Grad\mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}}}\label{structann__t_ae668825bd99ec5a8e701cd34833d92c8}
+Weight error gradient from last step \hypertarget{structann__t_a56f1cf095bad5da7e0c944dd9727293a}{\index{ann\+\_\+t@{ann\+\_\+t}!update\+Value@{update\+Value}}
+\index{update\+Value@{update\+Value}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{update\+Value}]{\setlength{\rightskip}{0pt plus 5cm}double update\+Value\mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}}}\label{structann__t_a56f1cf095bad5da7e0c944dd9727293a}
+Update value according to R\+P\+R\+O\+P algorithm for each weight \hypertarget{structann__t_aee905c93142ba709a90118c788622185}{\index{ann\+\_\+t@{ann\+\_\+t}!w@{w}}
+\index{w@{w}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{w}]{\setlength{\rightskip}{0pt plus 5cm}double w\mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}}}\label{structann__t_aee905c93142ba709a90118c788622185}
+Weights matrix \hypertarget{structann__t_a19e899724a3a7ab9150e22e0d48ebc3e}{\index{ann\+\_\+t@{ann\+\_\+t}!w\+Delta@{w\+Delta}}
+\index{w\+Delta@{w\+Delta}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{w\+Delta}]{\setlength{\rightskip}{0pt plus 5cm}double w\+Delta\mbox{[}Nx\mbox{]}\mbox{[}Nx\mbox{]}}}\label{structann__t_a19e899724a3a7ab9150e22e0d48ebc3e}
+Delta of weights change \hypertarget{structann__t_ac566dbcdd25e058c1e82f59d63dfd12b}{\index{ann\+\_\+t@{ann\+\_\+t}!x@{x}}
+\index{x@{x}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{x}]{\setlength{\rightskip}{0pt plus 5cm}double x\mbox{[}Nx\mbox{]}}}\label{structann__t_ac566dbcdd25e058c1e82f59d63dfd12b}
+Input of neurons \hypertarget{structann__t_adec9cbbd838a286742a4ae286bff0e30}{\index{ann\+\_\+t@{ann\+\_\+t}!y@{y}}
+\index{y@{y}!ann\+\_\+t@{ann\+\_\+t}}
+\paragraph[{y}]{\setlength{\rightskip}{0pt plus 5cm}double y\mbox{[}Nx\mbox{]}}}\label{structann__t_adec9cbbd838a286742a4ae286bff0e30}
+Output of neurons 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rprop_8c}{rprop.\+c}\end{DoxyCompactItemize}

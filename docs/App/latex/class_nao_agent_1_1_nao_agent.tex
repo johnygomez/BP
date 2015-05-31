@@ -1,0 +1,112 @@
+\subsection{Nao\+Agent Class Reference}
+\label{class_nao_agent_1_1_nao_agent}\index{Nao\+Agent@{Nao\+Agent}}
+
+
+Implementation of Agent interface on Nao robot in Webots simulator.  
+
+
+
+
+Inherits {\bf Agent}.
+
+\subsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def {\bf \+\_\+\+\_\+init\+\_\+\+\_\+}\label{class_nao_agent_1_1_nao_agent_ac775ee34451fdfa742b318538164070e}
+
+\begin{DoxyCompactList}\small\item\em Constructor method setups default parameters. \end{DoxyCompactList}\item 
+def {\bf connect}
+\begin{DoxyCompactList}\small\item\em Method handles connection to simulated robot and initialization of its features. \end{DoxyCompactList}\item 
+def {\bf disconnect}\label{class_nao_agent_1_1_nao_agent_afab97b4023d6e30d95344406b3655983}
+
+\begin{DoxyCompactList}\small\item\em Disconnects from simulated Nao. \end{DoxyCompactList}\item 
+def {\bf do}
+\begin{DoxyCompactList}\small\item\em Perform specified action from the set of all available motions. \end{DoxyCompactList}\item 
+def {\bf go\+\_\+forward}\label{class_nao_agent_1_1_nao_agent_a74f88e9c727035ad050d4a1b5e16eb5f}
+
+\begin{DoxyCompactList}\small\item\em This method performs movements along the X-\/axis, with 0.\+25m distance. \end{DoxyCompactList}\item 
+def {\bf go\+\_\+right}\label{class_nao_agent_1_1_nao_agent_a1825cf4236b693f347db9c793206049c}
+
+\begin{DoxyCompactList}\small\item\em This method performs a rotation 30 degrees to the right. \end{DoxyCompactList}\item 
+def {\bf go\+\_\+left}\label{class_nao_agent_1_1_nao_agent_a3661eec663302a3b67351833c2c9b8de}
+
+\begin{DoxyCompactList}\small\item\em This method perform movement 30 degrees left. \end{DoxyCompactList}\item 
+def {\bf Stiffness\+On}
+\begin{DoxyCompactList}\small\item\em Sets the stiffnes of Nao's joints to maximal value, to make him ready to perform motions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+{\bf robot\+\_\+ip}\label{class_nao_agent_1_1_nao_agent_a70221305bf8db6392330ef28121efd25}
+
+\begin{DoxyCompactList}\small\item\em Default connection I\+P address. \end{DoxyCompactList}\item 
+{\bf robot\+\_\+port}\label{class_nao_agent_1_1_nao_agent_a9282cdfa59976fe1cfc1a539df185c27}
+
+\begin{DoxyCompactList}\small\item\em Default connection port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Implementation of Agent interface on Nao robot in Webots simulator. 
+
+\subsubsection{Member Function Documentation}
+\index{Nao\+Agent\+::\+Nao\+Agent@{Nao\+Agent\+::\+Nao\+Agent}!connect@{connect}}
+\index{connect@{connect}!Nao\+Agent\+::\+Nao\+Agent@{Nao\+Agent\+::\+Nao\+Agent}}
+\paragraph[{connect}]{\setlength{\rightskip}{0pt plus 5cm}def connect (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{ip = {\ttfamily None}, }
+\item[{}]{port = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}\label{class_nao_agent_1_1_nao_agent_a0f3e881a92d7a1b4d6d07d9e63180c98}
+
+
+Method handles connection to simulated robot and initialization of its features. 
+
+It connection to the robot on specified Ip\+:port and initializes the robot to the init position, preparing it for motions. 
+\begin{DoxyParams}{Parameters}
+{\em ip} & I\+P address of a robot \\
+\hline
+{\em port} & Port number of a robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True, if connection was succesful, else False 
+\end{DoxyReturn}
+\index{Nao\+Agent\+::\+Nao\+Agent@{Nao\+Agent\+::\+Nao\+Agent}!do@{do}}
+\index{do@{do}!Nao\+Agent\+::\+Nao\+Agent@{Nao\+Agent\+::\+Nao\+Agent}}
+\paragraph[{do}]{\setlength{\rightskip}{0pt plus 5cm}def do (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{action\+\_\+number}
+\end{DoxyParamCaption}
+)}\label{class_nao_agent_1_1_nao_agent_a412db3f49e4869fa4cb87535dcc77caf}
+
+
+Perform specified action from the set of all available motions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action\+\_\+number} & specifies position of action in the action list \\
+\hline
+\end{DoxyParams}
+\index{Nao\+Agent\+::\+Nao\+Agent@{Nao\+Agent\+::\+Nao\+Agent}!Stiffness\+On@{Stiffness\+On}}
+\index{Stiffness\+On@{Stiffness\+On}!Nao\+Agent\+::\+Nao\+Agent@{Nao\+Agent\+::\+Nao\+Agent}}
+\paragraph[{Stiffness\+On}]{\setlength{\rightskip}{0pt plus 5cm}def Stiffness\+On (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{proxy}
+\end{DoxyParamCaption}
+)}\label{class_nao_agent_1_1_nao_agent_add7585e99624d7863d2e1291b1af2669}
+
+
+Sets the stiffnes of Nao's joints to maximal value, to make him ready to perform motions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proxy} & specifies a proxy(path) for setting the joint's stiffness \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/gomez/\+Projects/\+B\+P/visualization/server/Nao\+Agent.\+py\end{DoxyCompactItemize}

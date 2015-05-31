@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}File Index}{1}
+\contentsline {subsection}{\numberline {1.1}File List}{1}
+\contentsline {section}{\numberline {2}File Documentation}{1}
+\contentsline {subsection}{\numberline {2.1}app.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}js File Reference}{1}
+\contentsline {subsubsection}{\numberline {2.1.1}Detailed Description}{2}
+\contentsline {subsubsection}{\numberline {2.1.2}Function Documentation}{2}
+\contentsline {paragraph}{\numberline {2.1.2.1}connect\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Robot}{2}
+\contentsline {paragraph}{\numberline {2.1.2.2}disable\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Buttons}{2}
+\contentsline {paragraph}{\numberline {2.1.2.3}do\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Action}{2}
+\contentsline {paragraph}{\numberline {2.1.2.4}enable\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Buttons}{2}
+\contentsline {paragraph}{\numberline {2.1.2.5}load\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tasks}{2}
+\contentsline {paragraph}{\numberline {2.1.2.6}run\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Task}{2}
+\contentsline {paragraph}{\numberline {2.1.2.7}save\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Task}{2}
+\contentsline {paragraph}{\numberline {2.1.2.8}server\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Response}{3}
+\contentsline {paragraph}{\numberline {2.1.2.9}show\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Controls}{3}
+\contentsline {paragraph}{\numberline {2.1.2.10}show\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Intro}{3}
+\contentsline {paragraph}{\numberline {2.1.2.11}update\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}State}{3}
