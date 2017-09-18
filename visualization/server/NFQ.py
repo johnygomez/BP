@@ -42,7 +42,7 @@ class NFQ:
     self.task = Task()
     ## State variable signalizing if Agent is connected to the real robot
     #
-    self.connected = self.agent.connect(ip = '192.168.1.18')
+    self.connected = self.agent.connect(ip = '192.168.43.96')
     ## Connection to the Redis database
     #
     self.redis_server = redis.Redis('localhost')

@@ -16,7 +16,7 @@ var tasks;
  */
 function connectRobot() {
   // Ip address of the server
-  var host = "ws://192.168.1.130:9000/ws";
+  var host = "ws://192.168.43.134:9000/ws";
   socket = new WebSocket(host);
 
   if (socket) {

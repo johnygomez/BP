@@ -1,3 +1,7 @@
+*.pyc
+*.so
+.DS_Store
+*.zip
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Aux files, old files
